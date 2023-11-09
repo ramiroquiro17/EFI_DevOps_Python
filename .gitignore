@@ -10,7 +10,4 @@ __pycache__/
 # Archivos de registro
 *.log
 
-# Carpeta de migraciones generada por Flask-Migrate
-/migrations
-
 .data/
