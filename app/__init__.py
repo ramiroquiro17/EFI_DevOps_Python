@@ -1,14 +1,10 @@
-# Archivo principal que ejecuta Flask
-# Carpetas de flask para que lo reconozcan como parte del ambiente necesitan tener un arhivo init.
-# Si llamás a APP y no establecémos el archivo que app está llamando, se hace la llamada al init.
-# Cuando se hace el flask run, flask hace una llamada de app donde se encutentra el init.
-
 import os
 
 from flask import Flask
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+
 from dotenv import load_dotenv # Vinculamos el .env para ingresar a la base de datos
 
 app = Flask(__name__)

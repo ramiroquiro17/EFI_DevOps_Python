@@ -33,3 +33,4 @@ class CategorySchema(ma.Schema):
     id = fields.Integer(dump_only=True) # Mostrar id del posteo
     category = fields.String()
     posts = fields.Nested(PostSchema, many=True) # Muestra los post de cada usuario almacenados en la tabla post
+
