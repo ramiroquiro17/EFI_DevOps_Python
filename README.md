@@ -8,7 +8,7 @@
 
 - En las publicaciones y comentarios se podrá obtener el nombre del usuario que lo realizó y la fecha de creación.
 
-- Todos los datos que se ingresen serán almacenados en una base de datos donde los administradores podrán observar de manera más organizada la nueva información y/o últimas ediciones de (publicaciones y comentarios) realizadas por usuarios, como también eliminar o realizar modificaciones en caso de ocnsiderarlo necesario.
+- Todos los datos que se ingresen serán almacenados en una base de datos donde los administradores podrán observar de manera más organizada la nueva información y/o últimas ediciones de (publicaciones y comentarios) realizadas por usuarios, como también eliminar o realizar modificaciones en caso de considerarlo necesario.
 
 ## Contribuyentes
 
