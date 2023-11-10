@@ -16,10 +16,10 @@
 - m.venencia@itecriocuarto.org.ar
 
 - Ramiro Quiroga
-- Gmail: r.quiroga@itecriocuarto.org.ar
+- r.quiroga@itecriocuarto.org.ar
 
 - Luciano Avendaño ()
-- Gmail: l.avendano@itecriocuarto.org.ar
+- l.avendano@itecriocuarto.org.ar
 
 ## Requisitos
 
@@ -80,7 +80,7 @@ Crear un archivo <sql> para que cree o inicialice el schema de la base de datos.
 
 - Podés requerir activar las funciones apache y Mysql del XAMPP.
 
-## Solución de prblemas
+## Solución de problemas
 
 Si se te genera un error a la hora de subir información o modificar información y no sabes cual es el problema, asegúrese de:
 
@@ -95,39 +95,3 @@ Si se te genera un error a la hora de subir información o modificar informació
 - Asegurar que el nombre de cada columna coincida con los nombres establecidos en el archivo views.
 
 - Tener corriendo el comando flask run --reload
-
-
-
-
-
-
-## Docker y docker-compose
-
-####Para los que estaban teniendo problemas con la db.
-
-Con este comando van a borrar los volúmenes asociados al docker-compose del proyecto:
-
-`docker-compose down -v `
-
-Les dejo otro comando, por las dudas que no sea suficiente el anterior, que va a borrar **todas** las imágenes, contenedores y volúmenes que tengan, usenló con cuidado:
-
-`docker system prune -a --volumes`
-
-
-Una vez hecho eso, les recomiendo borrar los contenedores y reconstruir las imágenes.
-
-Pueden correr:
-
-`docker-compose build && docker-compose up`
-
-
-Les recomiendo correrlo sin el `-d` al principio así pueden ver los logs más fácil en caso de que algo salga mal.
-
-Luego de eso lo cancelan con `CTRL+C` y lo vuelven a levantar con `docker-compose up -d` o `docker-compose restart`. Luego para frenarlo, usan `docker-compose stop`
-
-Presten **muchísima** atención a las variables de entorno y los valores que ponen. Yo les actualicé el .env.sample para que tengan de referencia. Ojo que les coincida con el `/init/create_schema.sql`, no llegué a configurar las variables de entorno.
-
-
-
-## Instalaciones
-
