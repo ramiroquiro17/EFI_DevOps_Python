@@ -2,8 +2,8 @@
 FROM python:3.9-alpine
 
 #Copia el directorio del contenedor.
-COPY . /sql_alchemy
-WORKDIR /sql_alchemy
+COPY . /EFIdevOpsPython
+WORKDIR /EFIdevOpsPython
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
