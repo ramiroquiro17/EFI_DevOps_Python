@@ -26,7 +26,7 @@ Este proyecto está disponible en https://github.com/ramiroquiro17/EFI_DevOps_Py
 
   git clone https://github.com/ramiroquiro17/EFI_DevOps_Python.git
 
-  **2- Construir las imagenes y levantar los contenedores:**
+  **2- Configurar el .env:**
 
   Crea y cofigura el archivo .env en base al archivo .env.sample según tus necesidades.
 
