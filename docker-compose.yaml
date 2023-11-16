@@ -27,7 +27,7 @@ services:
       - "5005:5005" 
     
     volumes:
-      - .:/sql_alchemy
+      - .:/EFIdevOpsPython
     env_file:
       - .env
     depends_on:
