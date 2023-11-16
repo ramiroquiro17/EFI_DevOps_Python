@@ -1,84 +1,63 @@
 ## EFI-PYTHON-DEVOPS
 
-- Este proyecto consiste en una API donde se pueden ingresar datos relacionados al miniblog realizado en el primer semestre.
+- Este proyecto consiste en un dockerizar una API de Flask donde se pueden gestionar usuarios, posteos, categorias y comentarios en un miniblog.
+Este proyecto está disponible en https://github.com/ramiroquiro17/EFI_DevOps_Python.git" 
 
-- Pueden filtrar el tipo de publicaciones que deseen observar a través de la opción categorías donde los usuarios pueden elegir o escribir el tipo de temática que desean encontrar en las públicaciones que le aparezcan al principio.
+## Estructura del Proyecto
 
-- Los nombres de usuarios no deben repetirse y en caso de que uno trate de registrarse con un nombre ya existente, se le aparecerá una alerta especificando que debe ingresar otro nombre.
+- *app*: Directorio principal de la aplicación.
+  - *models.py*: Define los modelos de la base de datos.
+  - *schemas.py*: Esquemas para la serialización de obtejos solicitados a la base de datos.
+  - *templates.py*: Contiene el index.html, los demás templates no fueron implementados en este proyecto.
+  - *views.py*: Define los endpoints o vistas de la aplicación.
 
-- En las publicaciones y comentarios se podrá obtener el nombre del usuario que lo realizó y la fecha de creación.
+- *migrations*: Contiene archivos relacionados con las migraciones de la base de datos.
+- *.env.sample*: Ejemplo de configuración de las variables de entorno.
+- *docker-compose.yml*: Define y configura los servicios de Docker.
+- *Dockerfile*: Instrucciones para construir la imagen Docker de la aplicación.
 
-- Todos los datos que se ingresen serán almacenados en una base de datos donde los administradores podrán observar de manera más organizada la nueva información y/o últimas ediciones de (publicaciones y comentarios) realizadas por usuarios, como también eliminar o realizar modificaciones en caso de considerarlo necesario.
+- *README.md*: Descripción e implementación del proyecto.
+- *requirements.txt*: Lista de dependencias del proyecto
+- *run.sh*: Ejecuta las migraciones de base de datos e inicia la aplicación Flask utilizando un servidor WSGI como Gunicorn.
 
-## Contribuyentes
+### Configuración del proyecto:
 
-- Matias Venencia
-- m.venencia@itecriocuarto.org.ar
+  **1- Crear un directorio para el proyecto y clonar el repositorio:** 
 
-- Ramiro Quiroga
-- r.quiroga@itecriocuarto.org.ar
+  git clone https://github.com/ramiroquiro17/EFI_DevOps_Python.git
 
-- Luciano Avendaño ()
-- l.avendano@itecriocuarto.org.ar
+  **2- Construir las imagenes y levantar los contenedores:**
 
-## Requisitos
+  Crea y cofigura el archivo .env en base al archivo .env.sample según tus necesidades.
 
-- Para correr esta aplicación se necesita tener instalado las siguientes librerías:
+  **3- Construir las imagenes y levantar los contenedores:**
 
-alembic==1.12.1
-blinker==1.7.0
-click==8.1.7
-colorama==0.4.6
-Flask==3.0.0
-flask-marshmallow==0.15.0
-Flask-Migrate==4.0.5
-Flask-SQLAlchemy==3.1.1
-greenlet==3.0.1
-gunicorn==21.2.0
-itsdangerous==2.1.2
-Jinja2==3.1.2
-load-dotenv==0.1.0
-Mako==1.2.4
-MarkupSafe==2.1.3
-marshmallow==3.20.1
-marshmallow-sqlalchemy==0.29.0
-packaging==23.2
-PyMySQL==1.1.0
-python-dotenv==1.0.0
-SQLAlchemy==2.0.23
-typing_extensions==4.8.0
-Werkzeug==3.0.1
+  docker-compose build && docker-compose up -d
 
-Para dockerizar la Api:
-- Instalar y utilizar Docker y Docker Compose para dockerizar la API. Para lo cual deberán:
-Configurar un servicio para la aplicación web de Flask (es decir, tendrá su contenedor independiente).
-Configurar un servicio para la base de datos MySQL.
-Configurar volúmenes para la persistencia de datos, “comunicación” entre contenedores y de estos con el host.
-Configurar las variables de <environment> del servicio de MySQL para que sean leídas desde el archivo de variables de entorno (<.env>).
-Configurar/crear un archivo de <shell> o <bash> que se encargue de correr aquellos comandos necesarios para el funcionamiento del proyecto (creación de tablas de la base de datos, iniciación del servicio de Gunicorn, ejecución de la aplicación de Flask, etc).
-Crear un archivo <sql> para que cree o inicialice el schema de la base de datos.
+  **4- Actualización de las migraciones:**
 
-## Instalación
+  flask db upgrade
 
-- Clonar repositorio: Ingresa al repositorio de GitHub del proyecto vas a la carpeta donde deseas clonarlo y en el cmd escribe "git clone https://github.com/ramiroquiro17/EFI_DevOps_Python.git"
+  **Implementación de la API**
 
-- Construir la imagen del Docker: Una vez ingresado el proyecto en una carpeta, podés crear y correr una imagen de Docker a través del cmd con "docker-compose build && docker-compose up"
+  Endpoints con MethodView:
 
-## Uso
+  - Las vistas utilizan la clase MethodView de Flask. Se define una clase para
+  cada modelo (User, Post, Comment, Category) que heredan de MethodView y
+  utilizan los métodos (GET, POST, PUT, DELETE) para manejar las operaciones CRUD.
 
-- Podés realizar vistas, creacion, modificaciones o eliminación de información a través de la extensión Postman (podés encontrarlo e instalarlo en la opción de extensiones del Visual Studio Code).
+# Requisitos
 
-- Una vez en Postman. Podés observar elementos específicos (como posts, usuarios, comentarios, etc) seleccionando la opción GET que te aparece al costado de la barra de navegación y en esta poner "localhost/5000:user" o el nombre de cualquier tabla que deseas visualizar.
+Conocimientos previos de python y flask.
 
-- En caso de querer visualizar una fila en específico. Podés especificar el id del elemento con "localhost/5000:user/3"
+Manejo de docker.
 
-- Si deseas crear un nuevo elemento, podés seleccionar la opción POST, ingresar "localhost/5000:user/id" e ir a "body" -> opción "raw" -> elegir en text: "JSON" -> Escribir el nuevo elemento que deseas ingresar con las columnas correspondientes (en formato JSON).
+Instalar programas:
 
-- Podés modificar elementos realizando los pasos especificados anteriormente pero eligiendo la opción PUT y especificando el id del elemento que deseas modificar. También podés eliminar algún elemento con la opción DELETE.
+docker: https://www.docker.com/get-started/
 
-## Configuración
+administrador base de datos: dbeaver(https://dbeaver.io/download/), sqlyog(https://sqlyog.es.download.it/)
 
-- Podés requerir activar las funciones apache y Mysql del XAMPP.
 
 ## Solución de problemas
 
@@ -95,3 +74,15 @@ Si se te genera un error a la hora de subir información o modificar informació
 - Asegurar que el nombre de cada columna coincida con los nombres establecidos en el archivo views.
 
 - Tener corriendo el comando flask run --reload
+
+# Contribuyentes
+
+- Matias Venencia
+- m.venencia@itecriocuarto.org.ar
+
+- Ramiro Quiroga
+- r.quiroga@itecriocuarto.org.ar
+
+- Luciano Avendaño
+- l.avendano@itecriocuarto.org.ar
+
